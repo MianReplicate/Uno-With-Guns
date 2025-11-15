@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Uno With Guns"
+run/main_scene="uid://dk27pvb4c3657"
 run/main_scene="uid://dxg683fwksg"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +20,9 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Uno With Guns"
 
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
 [input]
 
 sprint={
