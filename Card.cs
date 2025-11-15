@@ -17,7 +17,7 @@ public partial class Card : Node
 	public void MakeCard(string number, int colour)
 	{
 		GetNode("Colour").Color = colour_array[colour];
-		GetNode("Number").text = number;
+		GetNode("Number").Text = number;
 	}
 	MakeCard("2", 3);
 }
