@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyb7aueq5gc7o"]
+
+[ext_resource type="Texture2D" uid="uid://nokdbu4leiyf" path="res://fps/meow1-Sheet.png" id="1_obpw6"]
+[ext_resource type="Script" uid="uid://jqmlirs88uic" path="res://theop/Theop.cs" id="1_qrm72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrm72"]
+atlas = ExtResource("1_obpw6")
+region = Rect2(0, 0, 187, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2yyi"]
+atlas = ExtResource("1_obpw6")
+region = Rect2(187, 0, 187, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4kdy"]
+atlas = ExtResource("1_obpw6")
+region = Rect2(374, 0, 187, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxh14"]
+atlas = ExtResource("1_obpw6")
+region = Rect2(561, 0, 187, 276)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlafj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrm72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2yyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4kdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxh14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Theop" type="Node3D"]
+script = ExtResource("1_qrm72")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 2
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_hlafj")
+frame_progress = 0.71518874
