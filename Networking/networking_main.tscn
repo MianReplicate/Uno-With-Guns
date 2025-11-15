@@ -18,6 +18,13 @@ offset_bottom = 108.0
 theme_override_font_sizes/font_size = 32
 text = "HOST"
 
+[node name="sendpacket" type="Button" parent="."]
+offset_top = 304.0
+offset_right = 356.0
+offset_bottom = 412.0
+theme_override_font_sizes/font_size = 32
+text = "SEND PACKET"
+
 [node name="id" type="Label" parent="."]
 offset_left = 360.0
 offset_top = 108.0
@@ -31,9 +38,6 @@ offset_right = 789.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-
 [connection signal="pressed" from="client" to="." method="_on_client_pressed"]
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="sendpacket" to="." method="_on_sendpacket_pressed"]
