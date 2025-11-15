@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk27pvb4c3657"]
+
+[ext_resource type="Script" uid="uid://v02cx06qxu31" path="res://Networking/NetworkingMain.cs" id="1_a46f1"]
+
+[node name="NetworkingMain" type="CanvasLayer"]
+script = ExtResource("1_a46f1")
+
+[node name="client" type="Button" parent="."]
+offset_top = 112.0
+offset_right = 356.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 32
+text = "CLIENT"
+
+[node name="host" type="Button" parent="."]
+offset_right = 356.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 32
+text = "HOST"
+
+[node name="sendpacket" type="Button" parent="."]
+offset_top = 304.0
+offset_right = 356.0
+offset_bottom = 412.0
+theme_override_font_sizes/font_size = 32
+text = "SEND PACKET"
+
+[node name="id" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 108.0
+offset_right = 789.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 32
+
+[node name="isHost" type="Label" parent="."]
+offset_left = 360.0
+offset_right = 789.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+
+[connection signal="pressed" from="client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="sendpacket" to="." method="_on_sendpacket_pressed"]
