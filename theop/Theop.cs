@@ -9,8 +9,9 @@ public partial class Theop : Node3D
 	float OpTimer = 0;
 	float OpUpdateWaitTime = 1; // frames
 	public override void _Ready()
-	{
-	}
+    {
+        GetNode<AnimatedSprite3D>("AnimatedSprite3D").Play("default");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)

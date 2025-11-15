@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyb7aueq5gc7o"]
+[gd_scene load_steps=9 format=3 uid="uid://cyb7aueq5gc7o"]
 
 [ext_resource type="Texture2D" uid="uid://nokdbu4leiyf" path="res://fps/meow1-Sheet.png" id="1_obpw6"]
 [ext_resource type="Script" uid="uid://jqmlirs88uic" path="res://theop/Theop.cs" id="1_qrm72"]
@@ -39,11 +39,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Theop" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qrm72"]
+
+[node name="Theop" type="StaticBody3D"]
 script = ExtResource("1_qrm72")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.008
 billboard = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_hlafj")
-frame_progress = 0.71518874
+frame_progress = 0.80640167
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qrm72")
+disabled = true
