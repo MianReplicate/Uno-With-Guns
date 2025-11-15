@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdfuicem7ktk3"]
+
+[sub_resource type="SystemFont" id="SystemFont_0x8nb"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kobl7"]
+font = SubResource("SystemFont_0x8nb")
+font_size = 160
+
+[node name="Card" type="Node2D"]
+
+[node name="Card Background" type="Polygon2D" parent="."]
+position = Vector2(-9, -2)
+polygon = PackedVector2Array(366, 110, 366, 328, 516, 328, 516, 110)
+
+[node name="Colour" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-8.999751, 68)
+scale = Vector2(0.99999934, 0.6704539)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(366, 110, 365.99997, 218.4524, 366, 328, 516, 328, 516, 110, 442.20993, 110.000015)
+
+[node name="Number" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 395.0
+offset_top = 100.0
+offset_right = 467.0
+offset_bottom = 324.0
+text = "1"
+label_settings = SubResource("LabelSettings_kobl7")
