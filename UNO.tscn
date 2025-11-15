@@ -51,7 +51,8 @@ offset_right = 1118.0
 offset_bottom = 632.0
 text = "SUBMIT CARD"
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="Hand_Options" type="OptionButton" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 40.0
 offset_top = 363.0
