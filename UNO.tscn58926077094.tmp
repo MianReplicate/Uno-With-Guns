@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhpruyatxnvgp"]
+[gd_scene load_steps=4 format=3 uid="uid://bhpruyatxnvgp"]
 
 [ext_resource type="Script" uid="uid://5v0owhuhgxi6" path="res://UNO.gd" id="1_kccdd"]
-[ext_resource type="Script" uid="uid://bjojbyut2akm1" path="res://option_button.gd" id="2_pw783"]
 
 [sub_resource type="SystemFont" id="SystemFont_0x8nb"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -57,6 +56,3 @@ offset_left = 40.0
 offset_top = 363.0
 offset_right = 1119.0
 offset_bottom = 543.0
-script = ExtResource("2_pw783")
-
-[connection signal="pressed" from="Button" to="." method="_on_card_submit"]

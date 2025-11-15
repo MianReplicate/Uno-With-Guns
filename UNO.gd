@@ -1,9 +1,5 @@
 extends Control
-var deck = []
-var discard = []
-var hand = []
 var colour_codes = [Color("RED"),Color("GREEN"),Color("YELLOW"),Color("BLUE"), "!"]
-var opp_hand = []
 const HANDSIZE = 7
 
 
@@ -16,7 +12,7 @@ class uno_card:
 
 func _ready() -> void:
 	create_deck();
-	deck.shuffle();
+	globals.deck.shuffle();
 	deal_cards();
 	start_discard();
 	show_discard();
@@ -35,26 +31,30 @@ func create_deck():
 		var new_card = uno_card.new()
 		new_card.colour = colour_codes[i % 8 / 2];
 		new_card.number = str(floor(i/8)+ 1);
-		deck.append(new_card);
-	print(deck);
+		globals.deck.append(new_card);
+	print(globals.deck);
 
 func deal_cards():
 	for i in range(HANDSIZE*2):
 		match i % 2:
 			0:
-				hand.append(deck[0]);
-				deck.erase(0);
+				globals.hand.append(globals.deck[0]);
+				globals.deck.erase(0);
 			1:
-				opp_hand.append(deck[0]);
-				deck.erase(0);
+				globals.opp_hand.append(globals.deck[0]);
+				globals.deck.erase(0);
 
 func start_discard():
-	discard.append(deck[0]);
-	deck.erase(0);
+	globals.discard.append(globals.deck[0]);
+	globals.deck.erase(0);
 
 func show_discard():
-	get_node("%Colour").set_color(discard[discard.size() - 1].colour);
-	get_node("%Number").set_text(discard[discard.size() - 1].number);
+	get_node("%Colour").set_color(globals.discard[globals.discard.size() - 1].colour);
+	get_node("%Number").set_text(globals.discard[globals.discard.size() - 1].number);
 	pass
 	# split the discard pile's top card code
 	# get_node("%Colour").Color = 
+
+
+func _on_card_submit() -> void:
+	pass
