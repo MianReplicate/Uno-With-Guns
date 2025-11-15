@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class FovControllerComponent : Node
 {
     [Export] public Camera3D Camera;

@@ -1,5 +1,7 @@
 using System.Xml;
 using Godot;
+
+[GlobalClass]
 public partial class Cam3DControllerComponent : Node {
 	const float LOOKSENSE = 0.0025f * 4;
 	

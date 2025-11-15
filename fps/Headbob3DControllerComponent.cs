@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class Headbob3DControllerComponent : Node
 {
     [Export] public Sprint3DControllerComponent Sprint3DControllerComponent;

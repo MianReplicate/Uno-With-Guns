@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class Sprint3DControllerComponent : Node
 {
     public bool IsSprint = false;
