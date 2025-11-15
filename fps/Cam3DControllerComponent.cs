@@ -56,7 +56,7 @@ public partial class Cam3DControllerComponent : Node {
 		if(Paused)
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 		else
-			Input.MouseMode = Input.MouseModeEnum.Hidden;
+			Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
 	public void cameraSway(Vector3 inputDir){

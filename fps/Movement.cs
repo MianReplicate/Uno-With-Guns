@@ -3,7 +3,11 @@ using System;
 
 public partial class Movement : CharacterBody3D
 {
-	public const float Speed = 5.0f;
+	[Export] public Sprint3DControllerComponent SprintComponent;
+	public float Speed
+    {
+        get => SprintComponent.IsSprint ? 10f : 5f;
+    }
 	public const float JumpVelocity = 4.5f;
 
 	public override void _PhysicsProcess(double delta)
