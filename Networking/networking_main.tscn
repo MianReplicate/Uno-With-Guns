@@ -6,24 +6,28 @@
 script = ExtResource("1_a46f1")
 
 [node name="client" type="Button" parent="."]
-offset_top = 112.0
-offset_right = 356.0
-offset_bottom = 220.0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 296.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 32
 text = "CLIENT"
 
+[node name="play" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 408.0
+offset_right = 296.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+
 [node name="host" type="Button" parent="."]
-offset_right = 356.0
-offset_bottom = 108.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 80.0
 theme_override_font_sizes/font_size = 32
 text = "HOST"
-
-[node name="sendpacket" type="Button" parent="."]
-offset_top = 304.0
-offset_right = 356.0
-offset_bottom = 412.0
-theme_override_font_sizes/font_size = 32
-text = "SEND PACKET"
 
 [node name="id" type="Label" parent="."]
 offset_left = 360.0
@@ -38,6 +42,38 @@ offset_right = 789.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
 
+[node name="ip" type="LineEdit" parent="."]
+offset_left = 104.0
+offset_top = 160.0
+offset_right = 296.0
+offset_bottom = 213.0
+theme_override_font_sizes/font_size = 32
+text = "127.0.0.1"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 165.0
+offset_right = 56.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 32
+text = "ip:"
+
+[node name="port" type="LineEdit" parent="."]
+offset_left = 104.0
+offset_top = 224.0
+offset_right = 296.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 32
+text = "6969"
+
+[node name="portmeow" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 229.0
+offset_right = 56.0
+offset_bottom = 274.0
+theme_override_font_sizes/font_size = 32
+text = "port:"
+
 [connection signal="pressed" from="client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="sendpacket" to="." method="_on_sendpacket_pressed"]

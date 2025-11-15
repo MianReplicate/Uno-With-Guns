@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
@@ -19,12 +20,17 @@ public partial class NetworkingMain : CanvasLayer
 	public Node3D Op ;
 	[Export]
 
+
+
+	private int NumPlayersConnected = 0; 
 	public CharacterBody3D Player ;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
 	public void CreateClient()
 	{
-		string IPAddress = "127.0.0.1";
+
+		Port = GetNode<LineEdit>("port").Text.ToInt();
+		string IPAddress = GetNode<LineEdit>("ip").Text;
 		
 		GD.Print($"[CreateClient] Attempting to connect to {IPAddress}:{Port}");
 		GetTree().GetMultiplayer();
@@ -182,6 +188,12 @@ public partial class NetworkingMain : CanvasLayer
     {
 		GD.Print(newPos);
 		Op.GlobalPosition = newPos;
+    }
+
+
+	public void _on_play_pressed()
+    {
+        
     }
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
