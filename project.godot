@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Uno With Guns"
-run/main_scene="uid://bd3s3mxqdvoxs"
+run/main_scene="uid://c5r1i4sxsuhu6"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

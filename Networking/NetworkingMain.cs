@@ -23,6 +23,7 @@ public partial class NetworkingMain : CanvasLayer
 
 
 	private int NumPlayersConnected = 0; 
+	[Export]
 	public CharacterBody3D Player ;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
