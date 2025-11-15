@@ -1,18 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd3s3mxqdvoxs"]
+[gd_scene load_steps=12 format=3 uid="uid://bd3s3mxqdvoxs"]
 
-[ext_resource type="Script" uid="uid://bxnngvcblbmxv" path="res://fps/Movement.cs" id="1_0qfo5"]
+[ext_resource type="Script" uid="uid://bxnngvcblbmxv" path="res://fps/Player.cs" id="1_0qfo5"]
 [ext_resource type="Script" uid="uid://cmyj245ia0a20" path="res://fps/Cam3DControllerComponent.cs" id="2_i3d57"]
+[ext_resource type="Script" uid="uid://ura1b3yfjnl2" path="res://fps/HealthComponent.cs" id="2_wdpcj"]
 [ext_resource type="Script" uid="uid://2kycdjnlcr0u" path="res://fps/FovControllerComponent.cs" id="3_e0ml0"]
 [ext_resource type="Script" uid="uid://bl8cg8h7y4vmg" path="res://fps/Headbob3DControllerComponent.cs" id="4_d4y6o"]
 [ext_resource type="Script" uid="uid://cynq8rrr2n1kk" path="res://fps/InteractControllerComponent.cs" id="5_drgyq"]
 [ext_resource type="Script" uid="uid://de3gnu0fy87lt" path="res://fps/Sprint3DControllerComponent.cs" id="6_xi8sr"]
 [ext_resource type="PackedScene" uid="uid://bqgyqmeobtrvb" path="res://glock18.fbx" id="7_yxww1"]
+[ext_resource type="Script" uid="uid://105xre1mkmd2" path="res://fps/InstantGun.cs" id="9_c1b4b"]
+[ext_resource type="AudioStream" uid="uid://cidwkjffhj7ri" path="res://gunshot.mp3" id="10_7tnxx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yxww1"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("SprintComponent")]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("SprintComponent", "HealthComponent")]
 script = ExtResource("1_0qfo5")
 SprintComponent = NodePath("Sprint3DControllerComponent")
+HealthComponent = NodePath("HealthComponent")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_wdpcj")
+metadata/_custom_type_script = "uid://ura1b3yfjnl2"
 
 [node name="Cam3DControllerComponent" type="Node" parent="." node_paths=PackedStringArray("sprint3DControllerComponent", "Actor", "Camera")]
 script = ExtResource("2_i3d57")
@@ -42,12 +53,16 @@ metadata/_custom_type_script = "uid://de3gnu0fy87lt"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="firstGlock" parent="Camera3D" instance=ExtResource("7_yxww1")]
-transform = Transform3D(4.5403623e-17, -0.023763003, 9.439871e-10, -1.0387138e-09, -1.0387139e-09, -0.021595906, 0.023763003, 0, -9.43987e-10, -0.12809996, -0.06500815, -0.35435605)
+[node name="glock18" parent="Camera3D" node_paths=PackedStringArray("AudioStreamer") instance=ExtResource("7_yxww1")]
+transform = Transform3D(1.9589477e-17, -0.010252592, 4.48155e-10, -4.4815499e-10, -4.48155e-10, -0.010252592, 0.010252592, 0, -4.4815499e-10, 0.041061312, -0.03108649, -0.1133412)
+script = ExtResource("9_c1b4b")
+AudioStreamer = NodePath("AudioStreamPlayer3D")
 
-[node name="secondGlock" parent="Camera3D" instance=ExtResource("7_yxww1")]
-transform = Transform3D(4.5403623e-17, -0.023763003, 9.439871e-10, -1.0387138e-09, -1.0387139e-09, -0.021595906, 0.023763003, 0, -9.43987e-10, 0.1210127, -0.06640094, -0.34895113)
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D/glock18"]
+stream = ExtResource("10_7tnxx")
+max_polyphony = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.83559847, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_yxww1")
 debug_fill = false

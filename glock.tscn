@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dljwayaajdcb1"]
+
+[ext_resource type="PackedScene" uid="uid://bqgyqmeobtrvb" path="res://glock18.fbx" id="1_qxs6g"]
+
+[node name="Glock" type="Node"]
+
+[node name="glock18" parent="." instance=ExtResource("1_qxs6g")]
+transform = Transform3D(-1.3452407e-09, -0.03077552, 1.3452407e-09, 0, -1.3452407e-09, -0.03077552, 0.03077552, -1.3452407e-09, 5.880234e-17, 0.14684427, 0, -0.57318044)

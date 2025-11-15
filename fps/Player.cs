@@ -1,9 +1,10 @@
 using Godot;
 using System;
 
-public partial class Movement : CharacterBody3D
+public partial class Player : CharacterBody3D
 {
 	[Export] public Sprint3DControllerComponent SprintComponent;
+	[Export] public HealthComponent HealthComponent;
 	public float Speed
     {
         get => SprintComponent.IsSprint ? 10f : 5f;

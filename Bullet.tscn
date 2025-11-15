@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ukml0w4t7cv"]
+
+[ext_resource type="Script" uid="uid://dim60ivcwuycp" path="res://fps/Bullet.cs" id="1_ayd6b"]
+[ext_resource type="ArrayMesh" uid="uid://diqc30celcyf1" path="res://bullet.obj" id="2_4s4u5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7281b"]
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_ayd6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+shape = SubResource("BoxShape3D_7281b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(-0.5099637, 0, 2.1660608e-08, 0, 0.56491655, 0, -4.4582446e-08, 0, -0.24776849, 0, 0, 0)
+mesh = ExtResource("2_4s4u5")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
