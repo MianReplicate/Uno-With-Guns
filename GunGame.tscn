@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8t8wt3me6xux"]
+[gd_scene load_steps=6 format=3 uid="uid://cu37hfrrsd51g"]
 
-[ext_resource type="PackedScene" path="res://character.tscn" id="1_3vi7k"]
+[ext_resource type="PackedScene" uid="uid://bd3s3mxqdvoxs" path="res://character.tscn" id="1_0vbh1"]
+[ext_resource type="Texture2D" uid="uid://btc7e2ux15sj" path="res://crosshair.png" id="2_qbmqy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gfjgm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,5 +30,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.73146546, -1.3088084
 use_collision = true
 size = Vector3(8, 1, 8)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_3vi7k")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_0vbh1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01960206, 0.5910001, 0.029704005)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_qbmqy")
