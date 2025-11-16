@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhpruyatxnvgp"]
+
+[ext_resource type="Script" uid="uid://5v0owhuhgxi6" path="res://UNO.gd" id="1_kccdd"]
+[ext_resource type="Script" path="res://option_button.gd" id="2_pw783"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pw783"]
+font_size = 60
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_0x8nb"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kccdd"]
+font = SubResource("SystemFont_0x8nb")
+font_size = 160
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kccdd")
+
+[node name="Notice" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 705.0
+offset_top = 131.0
+offset_right = 1056.0
+offset_bottom = 242.0
+label_settings = SubResource("LabelSettings_pw783")
+
+[node name="Card" type="Node2D" parent="."]
+position = Vector2(155, -29)
+
+[node name="Card Background" type="Polygon2D" parent="Card"]
+position = Vector2(-9, -2)
+polygon = PackedVector2Array(366, 110, 366, 328, 516, 328, 516, 110)
+
+[node name="Colour" type="Polygon2D" parent="Card"]
+unique_name_in_owner = true
+position = Vector2(-8.999751, 68)
+scale = Vector2(0.99999934, 0.6704539)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(366, 110, 365.99997, 218.4524, 366, 328, 516, 328, 516, 110, 442.20993, 110.000015)
+
+[node name="Number" type="Label" parent="Card"]
+unique_name_in_owner = true
+offset_left = 356.0
+offset_top = 100.0
+offset_right = 507.0
+offset_bottom = 324.0
+text = "1"
+label_settings = SubResource("LabelSettings_kccdd")
+horizontal_alignment = 1
+
+[node name="Submit_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 565.0
+offset_right = 873.0
+offset_bottom = 632.0
+text = "SUBMIT CARD"
+
+[node name="Hand_Options" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 363.0
+offset_right = 1119.0
+offset_bottom = 543.0
+script = ExtResource("2_pw783")
+
+[node name="Draw_Card_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 564.0
+offset_right = 1119.0
+offset_bottom = 632.0
+text = "Draw Card"
+
+[connection signal="pressed" from="Submit_Button" to="." method="_on_card_submit"]
+[connection signal="pressed" from="Draw_Card_Button" to="." method="_on_draw_card"]

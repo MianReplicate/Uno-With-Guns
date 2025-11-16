@@ -110,26 +110,26 @@ public partial class NetworkingMain : CanvasLayer
     }
 
 	public void _on_client_pressed()
-    {
-        CreateClient();
-    }
+	{
+		CreateClient();
+	}
 
 	public void _on_host_pressed()
-    {
-        CreateServer();
-    }
+	{
+		CreateServer();
+	}
 
 	public void _on_sendpacket_pressed()
-    {
-        // Don't try to RPC if we don't have a connected multiplayer peer
-        if (!IsPeerConnected())
-        {
-            GD.PrintErr("Cannot send RPC: multiplayer peer is not connected.");
-            return;
-        }
+	{
+		// Don't try to RPC if we don't have a connected multiplayer peer
+		if (!IsPeerConnected())
+		{
+			GD.PrintErr("Cannot send RPC: multiplayer peer is not connected.");
+			return;
+		}
 
-        Rpc(nameof(UpdateOpPosition), Player.GlobalPosition);
-    }
+		Rpc(nameof(killyourself));
+	}
 
 	public bool IsPeerConnected()
 	{
@@ -201,19 +201,13 @@ public partial class NetworkingMain : CanvasLayer
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	public void UpdateOpPosition(Vector3 newPos)
-    {
-		GD.Print(newPos);
-		Op.GlobalPosition = newPos;
-    }
-
-	public void _on_play_pressed()
-    {
-        
-    }
+	public void killyourself()
+	{
+		GD.Print("Hello worldadfwjifhaudigfiulsdftgyutsdgftut");
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-    {
-        
-    }
+	{
+		
+	}
 }
