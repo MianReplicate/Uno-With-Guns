@@ -52,6 +52,7 @@ script = ExtResource("6_xi8sr")
 metadata/_custom_type_script = "uid://de3gnu0fy87lt"
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="glock18" parent="Camera3D" instance=ExtResource("7_yxww1")]
 transform = Transform3D(1.9589477e-17, -0.010252592, 4.48155e-10, -4.4815499e-10, -4.48155e-10, -0.010252592, 0.010252592, 0, -4.4815499e-10, 0.041061312, -0.03108649, -0.1133412)

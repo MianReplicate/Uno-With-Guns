@@ -46,7 +46,7 @@ visible = false
 script = ExtResource("1_qrm72")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-pixel_size = 0.008
+pixel_size = 0.011
 billboard = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_hlafj")

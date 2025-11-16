@@ -33,7 +33,7 @@ project/assembly_name="Uno With Guns"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/uuid/plugin.cfg")
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 
 [input]
 
