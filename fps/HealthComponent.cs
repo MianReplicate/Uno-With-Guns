@@ -28,6 +28,6 @@ public partial class HealthComponent : Node
     {
         Player.INSTANCE = null;
         this.GetParent().QueueFree();
-        NetworkingMain.INSTANCE.TrySendPacket("OtherPlayerDied");
+        NetworkingMain.Instance.TrySendPacket("OtherPlayerDied");
     }
 }

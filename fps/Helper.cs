@@ -38,6 +38,6 @@ public partial class Helper : Node
         if(wasNetworked)
             return;
 
-        NetworkingMain.INSTANCE.TrySendPacket("CreateBullet", bulletRes, position, rotation);
+        NetworkingMain.Instance.TrySendPacket("CreateBullet", bulletRes, position, rotation);
     }
 }

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Uno With Guns"
-run/main_scene="uid://c5r1i4sxsuhu6"
-config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+run/main_scene="uid://dk27pvb4c3657"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,6 +21,8 @@ globals="*res://globals.gd"
 
 [display]
 
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

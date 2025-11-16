@@ -18,7 +18,7 @@ public partial class Theop : Node3D
 		if(OpTimer > OpUpdateWaitTime && Player.INSTANCE != null)
         {
             OpTimer = 0;
-			NetworkingMain.INSTANCE.TrySendPacket("UpdateOpPosition", Player.INSTANCE.GlobalPosition);
+			NetworkingMain.Instance.TrySendPacket("UpdateOpPosition", Player.INSTANCE.GlobalPosition);
 
         }
 

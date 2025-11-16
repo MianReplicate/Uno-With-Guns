@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 public partial class NetworkingMain : CanvasLayer
 {
 
-	public static NetworkingMain INSTANCE;
+	public static NetworkingMain Instance;
 
 	enum Status
 	{
@@ -71,7 +71,7 @@ public partial class NetworkingMain : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		        INSTANCE = this;
+		        Instance = this;
 
 		// Don't auto-connect in _Ready. Let the user click HOST or CLIENT buttons instead.
 		GD.Print("[_Ready] NetworkingMain initialized. Press HOST or CLIENT to connect.");
