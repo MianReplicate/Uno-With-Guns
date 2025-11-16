@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cp1i6u16bchsk"]
+[gd_scene load_steps=3 format=3 uid="uid://cp1i6u16bchsk"]
+
+[ext_resource type="AudioStream" uid="uid://cidwkjffhj7ri" path="res://gunshot.mp3" id="1_leq4e"]
+[ext_resource type="Script" uid="uid://xnglw75bmj04" path="res://Gunshot.cs" id="2_lh4um"]
 
 [node name="Gunshot" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_leq4e")
+script = ExtResource("2_lh4um")
+
+[connection signal="finished" from="." to="." method="OnFinish"]

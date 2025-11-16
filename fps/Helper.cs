@@ -10,7 +10,7 @@ public partial class Helper : Node
     public override void _Ready()
     {
         INSTANCE = this;
-        Gunshot = 
+        Gunshot = GD.Load<PackedScene>("res://Gunshot.tscn");
     }
 
     public string GenerateID()
@@ -28,10 +28,12 @@ public partial class Helper : Node
         bulletScene.InitialRotation = rotation;
         bulletScene.Shooter = shooter;
 
-        
+        Gunshot gunScript = (Gunshot) Gunshot.Instantiate();
+
+        gunScript.StartPosition = position;
 
         GetTree().CurrentScene.AddChild(bulletScene);
-
+        GetTree().CurrentScene.AddChild(gunScript);
 
         if(wasNetworked)
             return;
