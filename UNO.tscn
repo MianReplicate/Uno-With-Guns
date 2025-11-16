@@ -34,7 +34,7 @@ offset_bottom = 242.0
 label_settings = SubResource("LabelSettings_pw783")
 
 [node name="Card" type="Node2D" parent="."]
-position = Vector2(155, -29)
+position = Vector2(56, -24)
 
 [node name="Card Background" type="Polygon2D" parent="Card"]
 position = Vector2(-9, -2)
@@ -59,27 +59,27 @@ horizontal_alignment = 1
 
 [node name="Submit_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 565.0
-offset_right = 873.0
-offset_bottom = 632.0
+offset_left = 8.0
+offset_top = 464.0
+offset_right = 680.0
+offset_bottom = 531.0
 text = "SUBMIT CARD"
 
 [node name="Hand_Options" type="OptionButton" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 40.0
-offset_top = 363.0
-offset_right = 1119.0
-offset_bottom = 543.0
+offset_left = 8.0
+offset_top = 336.0
+offset_right = 952.0
+offset_bottom = 457.0
 script = ExtResource("2_pw783")
 
 [node name="Draw_Card_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 886.0
-offset_top = 564.0
-offset_right = 1119.0
-offset_bottom = 632.0
+offset_left = 704.0
+offset_top = 464.0
+offset_right = 953.0
+offset_bottom = 532.0
 text = "Draw Card"
 
 [connection signal="pressed" from="Submit_Button" to="." method="_on_card_submit"]
