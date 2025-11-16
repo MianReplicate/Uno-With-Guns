@@ -83,7 +83,7 @@ public partial class Networking : CanvasLayer
 	public void OtherPlayerDied()
 	{
 		Op.Visible = false;
-				Multiplayer.MultiplayerPeer = null;
+				Multiplayer.MultiplayerPeer.Close();
 		GetTree().ChangeSceneToFile("res://Networking/networking_main.tscn");
 	}
 
