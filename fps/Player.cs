@@ -3,7 +3,7 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-
+	public static Player INSTANCE;
 	[Export] public Sprint3DControllerComponent SprintComponent;
 	[Export] public HealthComponent HealthComponent;
 	public float Speed
@@ -11,6 +11,11 @@ public partial class Player : CharacterBody3D
         get => SprintComponent.IsSprint ? 10f : 5f;
     }
 	public const float JumpVelocity = 4.5f;
+
+    public override void _Ready()
+    {
+        INSTANCE = this;
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{

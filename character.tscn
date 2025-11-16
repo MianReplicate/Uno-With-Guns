@@ -22,6 +22,7 @@ current = true
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_wdpcj")
+DefaultHealth = 100.0
 metadata/_custom_type_script = "uid://ura1b3yfjnl2"
 
 [node name="Cam3DControllerComponent" type="Node" parent="." node_paths=PackedStringArray("sprint3DControllerComponent", "Actor", "Camera")]

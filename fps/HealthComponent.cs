@@ -3,31 +3,31 @@ using Godot;
 [GlobalClass]
 public partial class HealthComponent : Node
 {
-    [Export] public float health = 100f;
-    private float _health
+    private float _health;
+    public float Health
     {
-        get => health;
+        get => _health;
         set {
-            health = value;
-            if(health <= 0)
+            _health = value;
+            if(_health <= 0)
             {
                 Die();
             }
         }
     }
 
+    [Export]
+    public float DefaultHealth;
+
+    public override void _Ready()
+    {
+        Health = DefaultHealth;
+    }
+
     public void Die()
     {
+        Player.INSTANCE = null;
         this.GetParent().QueueFree();
-    }
-
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-    }
-
-    public void Heal(float amount)
-    {
-        health += amount;
+        NetworkingMain.INSTANCE.TrySendPacket("OtherPlayerDied");
     }
 }
