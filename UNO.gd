@@ -63,10 +63,12 @@ func _on_card_submit() -> void:
 	#print(submitted_card.colour)
 	if (submitted_card.colour == globals.discard[globals.discard.size() - 1].colour):
 		discard_card(get_node("%Hand_Options").selected);
+		%Notice.set_text("");
 	elif (submitted_card.number == globals.discard[globals.discard.size() - 1].number):
 		discard_card(get_node("%Hand_Options").selected);
+		%Notice.set_text("");
 	else:
-		print("fuck no");
+		%Notice.set_text("fuck no");
 	post_turn();
 	
 
