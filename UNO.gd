@@ -95,3 +95,9 @@ func discard_card(id):
 func post_turn():
 	setup_hand()
 	show_discard()
+
+
+func _on_draw_card() -> void:
+	globals.hand.append(globals.deck[0])
+	globals.deck.erase (globals.deck[0])
+	setup_hand();

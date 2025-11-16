@@ -60,7 +60,7 @@ offset_right = 1119.0
 offset_bottom = 543.0
 script = ExtResource("2_pw783")
 
-[node name="Button" type="Button" parent="."]
+[node name="Draw_Card_Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 886.0
 offset_top = 564.0
@@ -69,3 +69,4 @@ offset_bottom = 632.0
 text = "Draw Card"
 
 [connection signal="pressed" from="Submit_Button" to="." method="_on_card_submit"]
+[connection signal="pressed" from="Draw_Card_Button" to="." method="_on_draw_card"]
