@@ -76,7 +76,7 @@ public partial class UnoGame : Node
 	public void Discard(int index)
     {
         discard.Add(deck[index]);
-		discard.RemoveAt(index);
+		deck.RemoveAt(index);
 
 		var latestDiscardCard = GetTopMostCardFromList(discard);
 		GetNode("%Colour").Set("Color", latestDiscardCard.colour);
