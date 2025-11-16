@@ -42,6 +42,7 @@ animations = [{
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qrm72"]
 
 [node name="Theop" type="StaticBody3D"]
+visible = false
 script = ExtResource("1_qrm72")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

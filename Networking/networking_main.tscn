@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk27pvb4c3657"]
 
-[ext_resource type="Script" uid="uid://v02cx06qxu31" path="res://Networking/NetworkingMain.cs" id="1_a46f1"]
+[ext_resource type="Script" uid="uid://s0rq5srngthm" path="res://Networking/NetworkingUI.cs" id="1_a46f1"]
 
 [node name="NetworkingMain" type="CanvasLayer"]
 script = ExtResource("1_a46f1")
