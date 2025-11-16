@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1feorq2443os"]
+[gd_scene load_steps=35 format=4 uid="uid://d1feorq2443os"]
 
 [ext_resource type="PackedScene" uid="uid://bd3s3mxqdvoxs" path="res://character.tscn" id="1_0vbh1"]
 [ext_resource type="Texture2D" uid="uid://btc7e2ux15sj" path="res://crosshair.png" id="2_qbmqy"]
