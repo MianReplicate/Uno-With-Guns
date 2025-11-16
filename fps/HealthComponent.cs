@@ -29,5 +29,7 @@ public partial class HealthComponent : Node
         Player.INSTANCE = null;
         this.GetParent().QueueFree();
         Networking.Instance.TrySendPacket("OtherPlayerDied");
+        Multiplayer.MultiplayerPeer = null;
+		GetTree().ChangeSceneToFile("res://Networking/networking_main.tscn");
     }
 }

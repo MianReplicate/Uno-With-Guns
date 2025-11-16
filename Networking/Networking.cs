@@ -83,6 +83,8 @@ public partial class Networking : CanvasLayer
 	public void OtherPlayerDied()
 	{
 		Op.Visible = false;
+				Multiplayer.MultiplayerPeer = null;
+		GetTree().ChangeSceneToFile("res://Networking/networking_main.tscn");
 	}
 
 	public void TrySendPacket(string packetName, params Variant[] args)
@@ -171,11 +173,6 @@ public partial class Networking : CanvasLayer
 		Op.Visible = true;
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	public void Died()
-	{
-		
-	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

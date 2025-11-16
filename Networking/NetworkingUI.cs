@@ -3,6 +3,12 @@ using System;
 
 public partial class NetworkingUI : CanvasLayer
 {
+
+    public override void _Ready()
+    {
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+
 	public bool clientToCreate = true;
 		public void _on_client_pressed()
     {
