@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhpruyatxnvgp"]
 
 [ext_resource type="Script" uid="uid://5v0owhuhgxi6" path="res://UNO.gd" id="1_kccdd"]
-[ext_resource type="Script" uid="uid://bjojbyut2akm1" path="res://option_button.gd" id="2_pw783"]
+[ext_resource type="Script" path="res://option_button.gd" id="2_pw783"]
 
 [sub_resource type="SystemFont" id="SystemFont_0x8nb"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -43,11 +43,11 @@ text = "1"
 label_settings = SubResource("LabelSettings_kccdd")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Submit_Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 41.0
 offset_top = 565.0
-offset_right = 1118.0
+offset_right = 873.0
 offset_bottom = 632.0
 text = "SUBMIT CARD"
 
@@ -60,4 +60,12 @@ offset_right = 1119.0
 offset_bottom = 543.0
 script = ExtResource("2_pw783")
 
-[connection signal="pressed" from="Button" to="." method="_on_card_submit"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 564.0
+offset_right = 1119.0
+offset_bottom = 632.0
+text = "Draw Card"
+
+[connection signal="pressed" from="Submit_Button" to="." method="_on_card_submit"]

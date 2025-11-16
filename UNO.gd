@@ -59,14 +59,20 @@ func show_discard():
 
 func _on_card_submit() -> void:
 	var submitted_card = globals.hand[get_node("%Hand_Options").selected]
+	#print(globals.discard[globals.discard.size() - 1].colour)
+	#print(submitted_card.colour)
 	if (submitted_card.colour == globals.discard[globals.discard.size() - 1].colour):
-		pass
+		discard_card(get_node("%Hand_Options").selected);
 	elif (submitted_card.number == globals.discard[globals.discard.size() - 1].number):
-		pass
+		discard_card(get_node("%Hand_Options").selected);
+	else:
+		print("fuck no");
+	post_turn();
 	
 
 func setup_hand():
-	print(globals.hand);
+	get_node("%Hand_Options").clear();
+	#print(globals.hand);
 	for i in globals.hand:
 		# turn colour to string
 		var colour_str = ""
@@ -81,3 +87,11 @@ func setup_hand():
 				colour_str = "Yellow"
 		get_node("%Hand_Options").add_item(colour_str + " " + i.number);
 		
+
+func discard_card(id):
+	globals.discard.append(globals.hand[id]);
+	globals.hand.erase(globals.hand[id]);
+
+func post_turn():
+	setup_hand()
+	show_discard()
