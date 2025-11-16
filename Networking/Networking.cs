@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
-public partial class NetworkingMain : CanvasLayer
+public partial class Networking : Node
 {
 
-	public static NetworkingMain Instance;
+	public static Networking Instance {get; private set;}
 
 	enum Status
 	{
@@ -28,11 +28,10 @@ public partial class NetworkingMain : CanvasLayer
 
 	public bool IsHost => Multiplayer.IsServer();
 	public bool clientToCreate = false; 
-	public Player playerScript;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
 
-    	public void CreateClient()
+	public void CreateClient()
 	{
 		
 		Port = GetNode<LineEdit>("port").Text.ToInt();
@@ -45,8 +44,8 @@ public partial class NetworkingMain : CanvasLayer
 		GD.Print($"[CreateClient] CreateClient returned: {error}");
 		
 		Multiplayer.MultiplayerPeer = peer;
-		GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
-		GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
+		// GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
+		// GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
 
 		StartConnectionTimer();
 	}
@@ -60,84 +59,83 @@ public partial class NetworkingMain : CanvasLayer
 		GD.Print($"[CreateServer] CreateServer returned: {error}");
 		
 		Multiplayer.MultiplayerPeer = peer;
-		GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
-		GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
+		// GetParent().GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
+		// GetParent().GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
 		
 		GD.Print("[CreateServer] Server is running. Waiting for clients...");
 		StartConnectionTimer();
-
-		playerScript = (Player) Player.GetScript();
 	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		        Instance = this;
+		Instance = this;
 
 		// Don't auto-connect in _Ready. Let the user click HOST or CLIENT buttons instead.
 		GD.Print("[_Ready] NetworkingMain initialized. Press HOST or CLIENT to connect.");
 
 		// Defer button disable to ensure the scene is fully ready
-		Callable.From(() =>
-		{
-			try
-			{
-				var sendBtn = GetNode<Button>("sendpacket");
-				if (sendBtn != null)
-					sendBtn.Disabled = true;
-			}
-			catch (Exception ex)
-			{
-				GD.PrintErr($"Error disabling send button: {ex}");
-			}
-		}).CallDeferred();
+		// Callable.From(() =>
+		// {
+		// 	try
+		// 	{
+		// 		var sendBtn = GetNode<Button>("sendpacket");
+		// 		if (sendBtn != null)
+		// 			sendBtn.Disabled = true;
+		// 	}
+		// 	catch (Exception ex)
+		// 	{
+		// 		GD.PrintErr($"Error disabling send button: {ex}");
+		// 	}
+		// }).CallDeferred();
 	}
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	    public void CreateBullet(string bulletRes, Vector3 position, Vector3 rotation)
-    {
-        Helper.INSTANCE.CreateBullet(bulletRes, position, rotation, null, true);
-    }
+		public void CreateBullet(string bulletRes, Vector3 position, Vector3 rotation)
+	{
+		Helper.INSTANCE.CreateBullet(bulletRes, position, rotation, null, true);
+	}
 
 	public void StartGunGame()
-    {
-        Op.Visible = true;
-    }
+	{
+		Op.Visible = true;
+	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void OtherPlayerDied()
-    {
-        Op.Visible = false;
-    }
+	{
+		Op.Visible = false;
+	}
 
 	public void TrySendPacket(string packetName, params Variant[] args)
-    {
-        // Don't try to RPC if we don't have a connected multiplayer peer
-        if (!IsPeerConnected())
-        {
-            GD.PrintErr("Cannot send RPC: multiplayer peer is not connected.");
-            return;
-        }
+	{
+		// Don't try to RPC if we don't have a connected multiplayer peer
+		if (!IsPeerConnected())
+		{
+			GD.PrintErr("Cannot send RPC: multiplayer peer is not connected.");
+			return;
+		}
 
-        Rpc(packetName, args);
-    }
+		Rpc(packetName, args);
+	}
 
 	public void _on_client_pressed()
-    {
+	{
 		clientToCreate = true;
-    }
+	}
 
 	public void _on_host_pressed()
-    {
+	{
 		clientToCreate = false;
-    }
+	}
 
 	public void _on_play_pressed()
-    {
-		this.Visible = false;
-        if(clientToCreate)
+	{
+		// this.Visible = false;
+		if(clientToCreate)
 			CreateClient();
 		else
 			CreateServer();
-    }
+		GetTree().ChangeSceneToFile("res://UNO.tscn");
+	}
 
 	public bool IsPeerConnected()
 	{
@@ -209,15 +207,15 @@ public partial class NetworkingMain : CanvasLayer
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void UpdateOpPosition(Vector3 newPos)
-    {
+	{
 		Op.GlobalPosition = newPos;
-    }
+	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void Died()
-    {
-        
-    }
+	{
+		
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

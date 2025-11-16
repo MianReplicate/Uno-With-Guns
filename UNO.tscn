@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhpruyatxnvgp"]
 
-[ext_resource type="Script" uid="uid://5v0owhuhgxi6" path="res://UNO.gd" id="1_kccdd"]
-[ext_resource type="Script" path="res://option_button.gd" id="2_pw783"]
+[ext_resource type="Script" uid="uid://dshutm288adsm" path="res://uno/UnoGame.cs" id="1_pw783"]
+[ext_resource type="Script" uid="uid://bjojbyut2akm1" path="res://option_button.gd" id="2_pw783"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pw783"]
 font_size = 60
@@ -9,6 +9,7 @@ font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_0x8nb"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kccdd"]
 font = SubResource("SystemFont_0x8nb")
@@ -21,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kccdd")
+script = ExtResource("1_pw783")
 
 [node name="Notice" type="Label" parent="."]
 unique_name_in_owner = true

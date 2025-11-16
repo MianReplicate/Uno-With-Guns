@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Uno With Guns"
 run/main_scene="uid://dk27pvb4c3657"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-globals="*res://globals.gd"
+Networking="*res://Networking/Networking.cs"
 
 [display]
 
@@ -32,7 +32,7 @@ project/assembly_name="Uno With Guns"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/uuid/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

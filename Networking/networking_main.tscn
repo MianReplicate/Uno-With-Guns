@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk27pvb4c3657"]
 
-[ext_resource type="Script" uid="uid://v02cx06qxu31" path="res://Networking/NetworkingMain.cs" id="1_a46f1"]
+[ext_resource type="Script" uid="uid://v02cx06qxu31" path="res://Networking/Networking.cs" id="1_a46f1"]
 
 [node name="NetworkingMain" type="CanvasLayer"]
-script = ExtResource("1_a46f1")
 
 [node name="client" type="Button" parent="."]
 offset_left = 16.0
@@ -74,6 +73,9 @@ offset_bottom = 274.0
 theme_override_font_sizes/font_size = 32
 text = "port:"
 
-[connection signal="pressed" from="client" to="." method="_on_client_pressed"]
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[node name="Networking" type="Node" parent="."]
+script = ExtResource("1_a46f1")
+
+[connection signal="pressed" from="client" to="Networking" method="_on_client_pressed"]
+[connection signal="pressed" from="play" to="Networking" method="_on_play_pressed"]
+[connection signal="pressed" from="host" to="Networking" method="_on_host_pressed"]

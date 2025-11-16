@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1feorq2443os"]
+[gd_scene load_steps=8 format=3 uid="uid://d1feorq2443os"]
 
 [ext_resource type="PackedScene" uid="uid://bd3s3mxqdvoxs" path="res://character.tscn" id="1_0vbh1"]
 [ext_resource type="Texture2D" uid="uid://btc7e2ux15sj" path="res://crosshair.png" id="2_qbmqy"]
-[ext_resource type="PackedScene" uid="uid://dk27pvb4c3657" path="res://Networking/networking_main.tscn" id="4_iulcu"]
 [ext_resource type="PackedScene" uid="uid://cyb7aueq5gc7o" path="res://theop/theop.tscn" id="5_26h2r"]
 [ext_resource type="Script" uid="uid://dv8ph4x7t4y4t" path="res://fps/Helper.cs" id="6_26h2r"]
 
@@ -45,10 +44,6 @@ offset_bottom = 540.0
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 texture = ExtResource("2_qbmqy")
-
-[node name="NetworkingMain" parent="." node_paths=PackedStringArray("Op", "Player") instance=ExtResource("4_iulcu")]
-Op = NodePath("../Theop")
-Player = NodePath("../CharacterBody3D")
 
 [node name="Theop" parent="." instance=ExtResource("5_26h2r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.76853454, 0)
