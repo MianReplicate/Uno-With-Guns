@@ -15,6 +15,11 @@ run/main_scene="uid://c5r1i4sxsuhu6"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+globals="*res://globals.gd"
+uuid="*res://addons/uuid/uuid.gd"
+
 [display]
 
 window/size/viewport_width=960
@@ -23,6 +28,10 @@ window/size/viewport_height=540
 [dotnet]
 
 project/assembly_name="Uno With Guns"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/uuid/plugin.cfg")
 
 [input]
 

@@ -7,6 +7,8 @@ using System.Security.Cryptography.X509Certificates;
 public partial class NetworkingMain : CanvasLayer
 {
 
+	public static NetworkingMain INSTANCE;
+
 	enum Status
 	{
 		Peer,
@@ -25,9 +27,12 @@ public partial class NetworkingMain : CanvasLayer
 	private int NumPlayersConnected = 0; 
 	[Export]
 	public CharacterBody3D Player ;
+	
+	public Player playerScript;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
-	public void CreateClient()
+
+    	public void CreateClient()
 	{
 
 		Port = GetNode<LineEdit>("port").Text.ToInt();
@@ -60,10 +65,14 @@ public partial class NetworkingMain : CanvasLayer
 		
 		GD.Print("[CreateServer] Server is running. Waiting for clients...");
 		StartConnectionTimer();
+
+		playerScript = (Player) Player.GetScript();
 	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		        INSTANCE = this;
+
 		// Don't auto-connect in _Ready. Let the user click HOST or CLIENT buttons instead.
 		GD.Print("[_Ready] NetworkingMain initialized. Press HOST or CLIENT to connect.");
 
@@ -82,6 +91,12 @@ public partial class NetworkingMain : CanvasLayer
 			}
 		}).CallDeferred();
 	}
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	    public void CreateBullet(string bulletRes, Vector3 position, Vector3 rotation)
+    {
+        Helper.INSTANCE.CreateBullet(bulletRes, position, rotation, null, true);
+    }
+
 	public void UpdateOpShit()
     {
         // Don't try to RPC if we don't have a connected multiplayer peer
@@ -93,6 +108,7 @@ public partial class NetworkingMain : CanvasLayer
 
         Rpc(nameof(UpdateOpPosition), Player.GlobalPosition);
     }
+
 	public void _on_client_pressed()
     {
         CreateClient();
@@ -115,7 +131,7 @@ public partial class NetworkingMain : CanvasLayer
         Rpc(nameof(UpdateOpPosition), Player.GlobalPosition);
     }
 
-	private bool IsPeerConnected()
+	public bool IsPeerConnected()
 	{
 		var mp = Multiplayer.MultiplayerPeer;
 		if (mp == null)
@@ -139,8 +155,8 @@ public partial class NetworkingMain : CanvasLayer
 				return false;
 			}
 		}
-		GD.PrintErr("[IsPeerConnected] Multiplayer peer is not ENetMultiplayerPeer");
-		return true;
+		// GD.PrintErr("[IsPeerConnected] Multiplayer peer is not ENetMultiplayerPeer");
+		return false;
 	}
 
 	private void StartConnectionTimer()
@@ -190,7 +206,6 @@ public partial class NetworkingMain : CanvasLayer
 		GD.Print(newPos);
 		Op.GlobalPosition = newPos;
     }
-
 
 	public void _on_play_pressed()
     {

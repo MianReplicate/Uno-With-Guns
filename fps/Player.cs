@@ -3,6 +3,7 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
+
 	[Export] public Sprint3DControllerComponent SprintComponent;
 	[Export] public HealthComponent HealthComponent;
 	public float Speed

@@ -3,6 +3,7 @@ using System;
 
 public partial class Bullet : Area3D
 {
+	// public 
 	public Vector3 InitialPosition;
 	public Vector3 InitialRotation;
 	[Export] public float Speed = 50f;
