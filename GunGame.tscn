@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1feorq2443os"]
+[gd_scene load_steps=9 format=3 uid="uid://d1feorq2443os"]
 
 [ext_resource type="PackedScene" uid="uid://bd3s3mxqdvoxs" path="res://character.tscn" id="1_0vbh1"]
-[ext_resource type="Script" uid="uid://bxnngvcblbmxv" path="res://fps/Player.cs" id="2_iulcu"]
 [ext_resource type="Texture2D" uid="uid://btc7e2ux15sj" path="res://crosshair.png" id="2_qbmqy"]
 [ext_resource type="PackedScene" uid="uid://dk27pvb4c3657" path="res://Networking/networking_main.tscn" id="4_iulcu"]
 [ext_resource type="PackedScene" uid="uid://cyb7aueq5gc7o" path="res://theop/theop.tscn" id="5_26h2r"]
@@ -36,7 +35,6 @@ size = Vector3(7, 1, 6)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_0vbh1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01960206, 0.5910001, 0.029704005)
-script = ExtResource("2_iulcu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,9 +50,8 @@ texture = ExtResource("2_qbmqy")
 Op = NodePath("../Theop")
 Player = NodePath("../CharacterBody3D")
 
-[node name="Theop" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("5_26h2r")]
+[node name="Theop" parent="." instance=ExtResource("5_26h2r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.76853454, 0)
-Player = NodePath("../CharacterBody3D")
 
 [node name="Helper" type="Node" parent="."]
 script = ExtResource("6_26h2r")

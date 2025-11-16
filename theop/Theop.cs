@@ -3,9 +3,6 @@ using System;
 
 public partial class Theop : Node3D
 {
-	// Called when the node enters the scene tree for the first time.
-	[Export]
-	public CharacterBody3D Player ;
 	float OpTimer = 0;
 	float OpUpdateWaitTime = 1; // frames
 	public override void _Ready()
@@ -18,10 +15,10 @@ public partial class Theop : Node3D
     {
         OpTimer += 1;
 
-		if(OpTimer > OpUpdateWaitTime)
+		if(OpTimer > OpUpdateWaitTime && Player.INSTANCE != null)
         {
             OpTimer = 0;
-			GetNode("../NetworkingMain").Call("UpdateOpShit");
+			NetworkingMain.INSTANCE.TrySendPacket("UpdateOpPosition", Player.INSTANCE.GlobalPosition);
 
         }
 

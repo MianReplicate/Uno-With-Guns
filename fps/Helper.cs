@@ -37,12 +37,7 @@ public partial class Helper : Node
 
         if(wasNetworked)
             return;
-        if (!NetworkingMain.INSTANCE.IsPeerConnected())
-        {
-            GD.PushWarning("Cannot send RPC: multiplayer peer is not connected.");
-            return;
-        }
 
-        NetworkingMain.INSTANCE.Rpc("CreateBullet", bulletRes, position, rotation);
+        NetworkingMain.INSTANCE.TrySendPacket("CreateBullet", bulletRes, position, rotation);
     }
 }

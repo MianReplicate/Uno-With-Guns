@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 globals="*res://globals.gd"
-uuid="*res://addons/uuid/uuid.gd"
 
 [display]
 

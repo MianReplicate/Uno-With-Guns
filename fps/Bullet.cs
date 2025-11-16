@@ -26,15 +26,16 @@ public partial class Bullet : Area3D
 			this.QueueFree();
 	}
 
-	public void OnBodyEntered(Node3D area)
+	public void OnBodyEntered(Node3D body)
     {
-		if(area != Shooter)
+		if(body != Shooter)
         {
 			this.QueueFree();
-			if(area is CharacterBody3D)
+			GD.Print("Touched someone!");
+			if(body is CharacterBody3D) // should be the receiver bullet
 			{
-				Player player = (Player) area.GetScript();
-				player.HealthComponent.TakeDamage(20);
+				GD.Print("Hit by bullet!");
+				Player.INSTANCE.HealthComponent.Health -= 20;
 			}
         }
     }

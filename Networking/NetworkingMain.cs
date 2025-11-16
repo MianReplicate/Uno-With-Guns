@@ -22,19 +22,19 @@ public partial class NetworkingMain : CanvasLayer
 	public Node3D Op ;
 	[Export]
 
-
-
 	private int NumPlayersConnected = 0; 
 	[Export]
 	public CharacterBody3D Player ;
-	
+
+	public bool IsHost => Multiplayer.IsServer();
+	public bool clientToCreate = false; 
 	public Player playerScript;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
 
     	public void CreateClient()
 	{
-
+		
 		Port = GetNode<LineEdit>("port").Text.ToInt();
 		string IPAddress = GetNode<LineEdit>("ip").Text;
 		
@@ -97,7 +97,18 @@ public partial class NetworkingMain : CanvasLayer
         Helper.INSTANCE.CreateBullet(bulletRes, position, rotation, null, true);
     }
 
-	public void UpdateOpShit()
+	public void StartGunGame()
+    {
+        Op.Visible = true;
+    }
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	public void OtherPlayerDied()
+    {
+        Op.Visible = false;
+    }
+
+	public void TrySendPacket(string packetName, params Variant[] args)
     {
         // Don't try to RPC if we don't have a connected multiplayer peer
         if (!IsPeerConnected())
@@ -106,29 +117,26 @@ public partial class NetworkingMain : CanvasLayer
             return;
         }
 
-        Rpc(nameof(UpdateOpPosition), Player.GlobalPosition);
+        Rpc(packetName, args);
     }
 
 	public void _on_client_pressed()
     {
-        CreateClient();
+		clientToCreate = true;
     }
 
 	public void _on_host_pressed()
     {
-        CreateServer();
+		clientToCreate = false;
     }
 
-	public void _on_sendpacket_pressed()
+	public void _on_play_pressed()
     {
-        // Don't try to RPC if we don't have a connected multiplayer peer
-        if (!IsPeerConnected())
-        {
-            GD.PrintErr("Cannot send RPC: multiplayer peer is not connected.");
-            return;
-        }
-
-        Rpc(nameof(UpdateOpPosition), Player.GlobalPosition);
+		this.Visible = false;
+        if(clientToCreate)
+			CreateClient();
+		else
+			CreateServer();
     }
 
 	public bool IsPeerConnected()
@@ -145,7 +153,6 @@ public partial class NetworkingMain : CanvasLayer
 			try
 			{
 				var status = enet.GetConnectionStatus();
-				GD.Print($"[IsPeerConnected] ENet status: {status}");
 				bool isConnected = status == ENetMultiplayerPeer.ConnectionStatus.Connected;
 				return isConnected;
 			}
@@ -203,11 +210,11 @@ public partial class NetworkingMain : CanvasLayer
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void UpdateOpPosition(Vector3 newPos)
     {
-		GD.Print(newPos);
 		Op.GlobalPosition = newPos;
     }
 
-	public void _on_play_pressed()
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	public void Died()
     {
         
     }

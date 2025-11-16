@@ -22,6 +22,7 @@ current = true
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_wdpcj")
+DefaultHealth = 100.0
 metadata/_custom_type_script = "uid://ura1b3yfjnl2"
 
 [node name="Cam3DControllerComponent" type="Node" parent="." node_paths=PackedStringArray("sprint3DControllerComponent", "Actor", "Camera")]
@@ -57,6 +58,5 @@ transform = Transform3D(1.9589477e-17, -0.010252592, 4.48155e-10, -4.4815499e-10
 script = ExtResource("9_c1b4b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.83559847, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_yxww1")
 debug_fill = false
