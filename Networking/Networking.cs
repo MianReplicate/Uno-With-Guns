@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 public partial class Networking : Node
 {
 
-	public static Networking Instance {get; private set;}
+	public static Networking Instance { get; private set; }
 
 	enum Status
 	{
@@ -19,30 +19,30 @@ public partial class Networking : Node
 	int Port = 6969;
 	[Export]
 
-	public Node3D Op ;
+	public Node3D Op;
 	[Export]
 
-	private int NumPlayersConnected = 0; 
+	private int NumPlayersConnected = 0;
 	[Export]
-	public CharacterBody3D Player ;
+	public CharacterBody3D Player;
 
 	public bool IsHost => Multiplayer.IsServer();
-	public bool clientToCreate = false; 
+	public bool clientToCreate = false;
 	// Timer used to poll the connection status until it's connected
 	private Timer _connectionTimer;
 
 	public void CreateClient()
 	{
-		
+
 		Port = GetNode<LineEdit>("port").Text.ToInt();
 		string IPAddress = GetNode<LineEdit>("ip").Text;
-		
+
 		GD.Print($"[CreateClient] Attempting to connect to {IPAddress}:{Port}");
 		GetTree().GetMultiplayer();
 		var peer = new ENetMultiplayerPeer();
 		var error = peer.CreateClient(IPAddress, Port);
 		GD.Print($"[CreateClient] CreateClient returned: {error}");
-		
+
 		Multiplayer.MultiplayerPeer = peer;
 		// GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
 		// GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
@@ -57,17 +57,18 @@ public partial class Networking : Node
 		var peer = new ENetMultiplayerPeer();
 		var error = peer.CreateServer(Port, MaxClients);
 		GD.Print($"[CreateServer] CreateServer returned: {error}");
-		
+
 		Multiplayer.MultiplayerPeer = peer;
 		// GetParent().GetNode<Label>("isHost").Text = "IsServer: " + Multiplayer.IsServer();
 		// GetParent().GetNode<Label>("id").Text = "ID: " + Multiplayer.GetUniqueId();
-		
+
 		GD.Print("[CreateServer] Server is running. Waiting for clients...");
 		StartConnectionTimer();
 	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
 		Instance = this;
 
 		// Don't auto-connect in _Ready. Let the user click HOST or CLIENT buttons instead.
@@ -89,7 +90,7 @@ public partial class Networking : Node
 		// }).CallDeferred();
 	}
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-		public void CreateBullet(string bulletRes, Vector3 position, Vector3 rotation)
+	public void CreateBullet(string bulletRes, Vector3 position, Vector3 rotation)
 	{
 		Helper.INSTANCE.CreateBullet(bulletRes, position, rotation, null, true);
 	}
@@ -117,25 +118,7 @@ public partial class Networking : Node
 		Rpc(packetName, args);
 	}
 
-	public void _on_client_pressed()
-	{
-		clientToCreate = true;
-	}
 
-	public void _on_host_pressed()
-	{
-		clientToCreate = false;
-	}
-
-	public void _on_play_pressed()
-	{
-		// this.Visible = false;
-		if(clientToCreate)
-			CreateClient();
-		else
-			CreateServer();
-		GetTree().ChangeSceneToFile("res://UNO.tscn");
-	}
 
 	public bool IsPeerConnected()
 	{
@@ -214,11 +197,11 @@ public partial class Networking : Node
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void Died()
 	{
-		
+
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
 }

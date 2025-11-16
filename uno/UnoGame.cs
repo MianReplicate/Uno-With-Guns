@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
+using System.Threading.Tasks;
+
 public partial class UnoGame : Node
 {
 	public System.Collections.Generic.Dictionary<string, Color> ColourCodes =
@@ -19,8 +21,9 @@ public partial class UnoGame : Node
 	public List<Card> deck;
 	public List<Card> hand;
 	public static UnoGame Instance;
-    public override void _Ready()
+    public override async void _Ready()
     {
+		
         StartIfNotStarted();
     }
 
